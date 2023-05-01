@@ -2,11 +2,11 @@
   "name": "bizlane",
   "version": "1.0.0",
   "description": "Business process automation tool",
-  "main": "dist/app.js",
+  "main": "dist/parser.js",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && node dist/parser.js",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,5 +27,8 @@
     "@typescript-eslint/parser": "^5.59.1",
     "eslint": "^8.39.0",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "commander": "^10.0.1"
   }
 }
