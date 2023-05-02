@@ -1,4 +1,6 @@
 import { Command } from 'commander';
+import { load } from 'js-yaml';
+import fs from 'fs';
 
 const program = new Command();
 program
@@ -13,4 +15,14 @@ if (!options.source) {
   program.help();
 }
 
-console.log(`SOurce file: ${options.source}`);
+if (!fs.existsSync(options.source)) {
+  console.log(`ERROR: File '${options.source}' does not exist.`);
+  process.exit(1);
+}
+
+try {
+  const doc = load(fs.readFileSync(options.source, 'utf8'));
+  console.log(doc);
+} catch (e) {
+  console.log(e);
+}

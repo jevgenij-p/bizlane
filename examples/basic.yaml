@@ -1,0 +1,8 @@
+---
+name: Sample playbook
+description: This is a sample palybook used to test the Bizlane parser.
+host: webserver1
+entry: task1
+vars:
+  ip_address: 127.0.0.1
+  port: 8080
