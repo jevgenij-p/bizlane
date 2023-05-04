@@ -1,6 +1,15 @@
+import fs from 'fs';
 import { Command } from 'commander';
 import { load } from 'js-yaml';
-import fs from 'fs';
+import { PlaybookData } from './types';
+
+class Playbook {
+  data: PlaybookData;
+  
+  constructor(data: PlaybookData) {
+    this.data = data;
+  }
+}
 
 const program = new Command();
 program
@@ -21,8 +30,11 @@ if (!fs.existsSync(options.source)) {
 }
 
 try {
-  const doc = load(fs.readFileSync(options.source, 'utf8'));
-  console.log(doc);
+  const source = fs.readFileSync(options.source, 'utf8');
+  const data: PlaybookData = load(source);
+  const playbook = new Playbook(data);
+  console.log(playbook);
+
 } catch (e) {
   console.log(e);
 }

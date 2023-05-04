@@ -3,6 +3,13 @@ name: Sample playbook
 description: This is a sample palybook used to test the Bizlane parser.
 host: webserver1
 entry: task1
+include_vars: global-vars.yaml
 vars:
   ip_address: 127.0.0.1
   port: 8080
+flow:
+- task:
+    name: task1
+    call: task2
+- task:
+    name: task2
